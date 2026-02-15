@@ -1,7 +1,7 @@
-import { lazy, Suspense, useMemo } from "react";
+import { Suspense, useMemo } from "react";
+import Markdown from "react-markdown";
 import { useParams } from "react-router-dom";
 
-const Markdown = lazy(() => import("react-markdown"));
 const tutorials = import.meta.glob("/src/data/tutorials/*.md", {
   query: "?raw",
   import: "default",
