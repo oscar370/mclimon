@@ -1,6 +1,6 @@
 ---
-title: "Primeros Pasos"
-order: 2
+title: Primeros Pasos
+order: 1
 draft: false
 ---
 ## Registro
