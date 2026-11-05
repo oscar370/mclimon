@@ -1,10 +1,9 @@
 ---
 title: Parcelas
 description: Cómo acceder, obtener y gestionar tus parcelas con PlotSquared.
-order: 1
+order: 2
 draft: false
 ---
-
 ## Acceso al Mundo de Parcelas
 
 Para ingresar al mundo plano donde se encuentran las parcelas, utiliza el siguiente comando:
