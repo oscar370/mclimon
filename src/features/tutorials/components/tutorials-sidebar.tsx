@@ -10,7 +10,8 @@ import {
   SidebarProvider,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { onSidebarToggleRequest } from "@/stores/sidebar";
+import { $sidebarOpen, onSidebarToggleRequest } from "@/stores/sidebar";
+import { useStore } from "@nanostores/react";
 import * as React from "react";
 
 function SidebarToggleBridge() {
@@ -33,13 +34,17 @@ type TutorialsSidebarProps = {
   children?: React.ReactNode;
 };
 
-export async function TutorialsSidebar({
+export function TutorialsSidebar({
   items,
   currentId,
   children,
 }: TutorialsSidebarProps) {
+  const open = useStore($sidebarOpen);
+
   return (
     <SidebarProvider
+      open={open}
+      onOpenChange={(value) => $sidebarOpen.set(value)}
       style={
         {
           "--sidebar-width": "var(--tutorials-sidebar-width)",
@@ -54,23 +59,26 @@ export async function TutorialsSidebar({
           <SidebarGroup>
             <SidebarGroupContent>
               <SidebarMenu>
-                {items.map((item) => (
-                  <SidebarMenuItem key={item.id}>
-                    <SidebarMenuButton
-                      className="rounded-none font-pixelify text-lg"
-                      render={
-                        <a
-                          href={item.href}
-                          aria-current={
-                            item.id === currentId ? "page" : undefined
-                          }
-                        />
-                      }
-                    >
-                      {item.title}
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
+                {items.map((item) => {
+                  const isActive = item.id === currentId;
+
+                  return (
+                    <SidebarMenuItem key={item.id}>
+                      <SidebarMenuButton
+                        className="rounded-none font-pixelify text-lg"
+                        isActive={isActive}
+                        render={
+                          <a
+                            href={item.href}
+                            aria-current={isActive ? "page" : undefined}
+                          />
+                        }
+                      >
+                        {item.title}
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  );
+                })}
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>

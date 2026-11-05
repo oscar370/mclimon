@@ -1,5 +1,10 @@
 ---
+import TutorialArticle from "@/features/tutorials/components/tutorial-article.astro";
+import TutorialsLayout from "@/features/tutorials/layouts/tutorials-layout.astro";
 import { getTutorials } from "@/features/tutorials/services/get-tutorials";
 const [first] = await getTutorials();
-return Astro.redirect(`/tutorials/${first.id}`);
 ---
+
+<TutorialsLayout currentId={first.id}>
+  <TutorialArticle tutorial={first} />
+</TutorialsLayout>

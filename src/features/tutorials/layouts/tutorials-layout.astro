@@ -2,11 +2,11 @@
 import BaseLayout from "@/components/layouts/base-layout.astro";
 import { NavBar } from "@/components/layouts/nav-bar";
 import { TutorialsSidebar } from "@/features/tutorials/components/tutorials-sidebar";
-import { getTutorials } from "../services/get-tutorials";
+import { getTutorialLinks } from "../services/get-tutorials";
 
 const { currentId } = Astro.props;
 
-const items = await getTutorials();
+const items = await getTutorialLinks();
 ---
 
 <BaseLayout>
