@@ -1,0 +1,31 @@
+media:
+  input: public/images
+  output: /images
+
+content:
+  - name: tutorials
+    label: Tutoriales
+    type: collection
+    path: src/features/tutorials/content
+    filename: "{fields.title}.md"
+    view:
+      fields: [title, order, draft]
+      sort: [order]
+    fields:
+      - name: title
+        label: Título
+        type: string
+        required: true
+      - name: description
+        label: Descripción
+        type: text
+      - name: order
+        label: Orden en el sidebar
+        type: number
+      - name: draft
+        label: Borrador
+        type: boolean
+        default: false
+      - name: body
+        label: Contenido
+        type: rich-text

@@ -1,0 +1,24 @@
+---
+import { Image } from "astro:assets";
+import { HeroParallax } from "./hero-parallax";
+import { IpButton } from "./ip-button";
+import heroImage from "@/lib/assets/images/hero.webp";
+import limonImage from "@/lib/assets/images/logo.webp";
+---
+
+<HeroParallax client:load>
+  <Image
+    slot="background"
+    class="size-full object-cover blur-xs brightness-60"
+    src={heroImage}
+    alt="Minecraft hero"
+    loading="eager"
+  />
+
+  <Image src={limonImage} alt="Server logo" />
+
+  <h1 class="uppercase font-bold mt-10 font-pixelify text-4xl text-shadow-lg">
+    Servidor survival semi-vanilla
+  </h1>
+  <IpButton client:load />
+</HeroParallax>

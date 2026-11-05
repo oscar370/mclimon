@@ -1,0 +1,73 @@
+/* src/styles/content.css */
+@layer components {
+  .content {
+    color: var(--muted-foreground);
+  }
+
+  .content > * + * {
+    margin-top: 1em;
+  }
+
+  .content :is(h1, h2, h3, h4) {
+    font-family: var(--font-pixelify);
+    color: var(--foreground);
+    line-height: 1.25;
+  }
+  .content h1 {
+    font-size: 2.25rem;
+  }
+  .content h2 {
+    font-size: 1.5rem;
+  }
+  .content h3 {
+    font-size: 1.25rem;
+  }
+
+  .content a {
+    color: var(--primary);
+    text-underline-offset: 4px;
+  }
+  .content a:hover {
+    text-decoration: underline;
+  }
+
+  .content :is(ul, ol) {
+    padding-left: 1.5em;
+  }
+  .content ul {
+    list-style: disc;
+  }
+  .content ol {
+    list-style: decimal;
+  }
+  .content li + li {
+    margin-top: 0.5em;
+  }
+
+  .content blockquote {
+    border-left: 3px solid var(--border);
+    padding-left: 1em;
+    font-style: italic;
+  }
+
+  .content :not(pre) > code {
+    background: var(--muted);
+    padding: 0.15em 0.35em;
+    font-size: 0.875em;
+  }
+
+  .content pre {
+    background: var(--muted);
+    padding: 1em;
+    overflow-x: auto;
+    font-size: 0.875em;
+  }
+
+  .content img {
+    border-radius: 0.5rem;
+  }
+  .content hr {
+    border-color: var(--border);
+    margin-block: 3em;
+  }
+}

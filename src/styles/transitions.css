@@ -1,0 +1,123 @@
+:root {
+  --vt-duration: 0.5s;
+  --vt-easing: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@keyframes vt-slide-up {
+  from {
+    transform: translateY(100%);
+  }
+}
+@keyframes vt-recede {
+  to {
+    transform: scale(0.96);
+    opacity: 0.5;
+  }
+}
+@keyframes vt-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes vt-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+::view-transition-new(landing):only-child,
+::view-transition-new(tutorials-sidebar):only-child,
+::view-transition-new(tutorial-content):only-child {
+  animation: vt-slide-up var(--vt-duration) var(--vt-easing) both;
+}
+
+::view-transition-old(landing):only-child,
+::view-transition-old(tutorials-sidebar):only-child,
+::view-transition-old(tutorial-content):only-child {
+  animation: vt-recede var(--vt-duration) var(--vt-easing) both;
+}
+
+::view-transition-old(tutorial-content):not(:only-child) {
+  animation: vt-recede var(--vt-duration) var(--vt-easing) both;
+}
+::view-transition-new(tutorial-content):not(:only-child) {
+  animation: vt-slide-up var(--vt-duration) var(--vt-easing) both;
+}
+
+::view-transition-old(tutorials-sidebar):not(:only-child),
+::view-transition-new(tutorials-sidebar):not(:only-child),
+::view-transition-old(landing):not(:only-child),
+::view-transition-new(landing):not(:only-child) {
+  animation: none;
+}
+
+::view-transition-old(tutorials-sidebar) {
+  transform-origin: 50vw 50vh;
+}
+::view-transition-old(tutorial-content) {
+  transform-origin: calc(50vw - var(--tutorials-sidebar-width)) 50vh;
+}
+@media (width < 48rem) {
+  ::view-transition-old(tutorial-content) {
+    transform-origin: 50vw 50vh;
+  }
+}
+
+::view-transition-group(landing),
+::view-transition-group(tutorials-sidebar),
+::view-transition-group(tutorial-content) {
+  animation: none;
+}
+
+::view-transition-group(navbar),
+::view-transition-group(navbar-home),
+::view-transition-group(navbar-tutorials),
+::view-transition-group(navbar-toggle) {
+  animation-duration: var(--vt-duration);
+  animation-timing-function: var(--vt-easing);
+}
+
+::view-transition-old(navbar),
+::view-transition-old(navbar-home),
+::view-transition-old(navbar-tutorials),
+::view-transition-old(navbar-toggle):not(:only-child) {
+  display: none;
+}
+::view-transition-new(navbar),
+::view-transition-new(navbar-home),
+::view-transition-new(navbar-tutorials),
+::view-transition-new(navbar-toggle):not(:only-child) {
+  animation: none;
+}
+
+::view-transition-new(navbar-toggle):only-child {
+  animation: vt-fade-in var(--vt-duration) var(--vt-easing) both;
+}
+::view-transition-old(navbar-toggle):only-child {
+  animation: vt-fade-out var(--vt-duration) var(--vt-easing) both;
+}
+
+::view-transition-group(landing),
+::view-transition-group(tutorials-sidebar),
+::view-transition-group(tutorial-content) {
+  z-index: 1;
+}
+::view-transition-group(navbar) {
+  z-index: 10;
+}
+::view-transition-group(navbar-home),
+::view-transition-group(navbar-tutorials),
+::view-transition-group(navbar-toggle) {
+  z-index: 11;
+}
+::view-transition-group(toaster) {
+  z-index: 20;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

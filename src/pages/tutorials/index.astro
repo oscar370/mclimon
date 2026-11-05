@@ -1,0 +1,5 @@
+---
+import { getTutorials } from "@/features/tutorials/services/get-tutorials";
+const [first] = await getTutorials();
+return Astro.redirect(`/tutorials/${first.id}`);
+---

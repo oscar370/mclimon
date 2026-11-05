@@ -1,0 +1,32 @@
+---
+import BaseLayout from "@/components/layouts/base-layout.astro";
+import { NavBar } from "@/components/layouts/nav-bar";
+import { TutorialsSidebar } from "@/features/tutorials/components/tutorials-sidebar";
+import { getTutorials } from "../services/get-tutorials";
+
+const { currentId } = Astro.props;
+
+const items = await getTutorials();
+---
+
+<BaseLayout>
+  <header
+    class="tutorials-header bg-background fixed top-0 right-0 z-50"
+    transition:name="navbar"
+    transition:animate="initial"
+  >
+    <NavBar client:load transition:persist showSidebarToggle />
+  </header>
+
+  <TutorialsSidebar client:load items={items} currentId={currentId}>
+    <main
+      class="bg-background h-svh w-full"
+      transition:name="tutorial-content"
+      transition:animate="initial"
+    >
+      <div class="overflow-y-auto px-1 md:px-0 max-w-150 mx-auto py-16">
+        <slot />
+      </div>
+    </main>
+  </TutorialsSidebar>
+</BaseLayout>

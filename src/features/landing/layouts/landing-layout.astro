@@ -1,0 +1,22 @@
+---
+import BaseLayout from "@/components/layouts/base-layout.astro";
+import { NavBar } from "@/components/layouts/nav-bar";
+---
+
+<BaseLayout>
+  <header
+    class="bg-background fixed inset-x-0 top-0 z-50 rounded-2xl w-fit mx-auto mt-2"
+    transition:name="navbar"
+    transition:animate="initial"
+  >
+    <NavBar client:load transition:persist />
+  </header>
+
+  <main
+    class="bg-background min-h-svh"
+    transition:name="landing"
+    transition:animate="initial"
+  >
+    <slot />
+  </main>
+</BaseLayout>
