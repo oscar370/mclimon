@@ -7,7 +7,7 @@ type HeroParallaxProps = {
 
 export function HeroParallax({ background, children }: HeroParallaxProps) {
   return (
-    <Parallax className="h-svh overflow-hidden">
+    <Parallax className="h-svh overflow-hidden" allowTouch>
       <ParallaxLayer className="absolute -inset-20" inverted>
         {background}
       </ParallaxLayer>
