@@ -19,4 +19,10 @@ export default defineConfig({
   },
 
   adapter: netlify(),
+
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: "hover",
+  },
+  trailingSlash: "always",
 });

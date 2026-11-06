@@ -17,6 +17,6 @@ export async function getTutorialLinks(): Promise<TutorialLink[]> {
   return tutorials.map((tutorial, index) => ({
     id: tutorial.id,
     title: tutorial.data.title,
-    href: index === 0 ? "/tutorials" : `/tutorials/${tutorial.id}`,
+    href: index === 0 ? "/tutorials/" : `/tutorials/${tutorial.id}/`,
   }));
 }

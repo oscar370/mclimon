@@ -42,7 +42,7 @@ export function NavBar({ showSidebarToggle = false }: NavBarProps) {
         <NavigationMenuItem className="[view-transition-name:navbar-tutorials]">
           <NavigationMenuLink
             className={navigationMenuTriggerStyle()}
-            render={<a href="/tutorials" />}
+            render={<a href="/tutorials/" />}
           >
             <span className="font-pixelify">Tutoriales</span>
           </NavigationMenuLink>
