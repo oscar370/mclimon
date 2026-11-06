@@ -17,7 +17,7 @@
 
 </div>
 
-![MCLimón landing page](./docs/screenshot-main.png)
+![MCLimón landing page](./.docs/screenshot-main.png)
 
 ---
 
