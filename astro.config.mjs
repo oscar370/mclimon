@@ -18,7 +18,11 @@ export default defineConfig({
     syntaxHighlight: false,
   },
 
-  adapter: netlify(),
+  adapter: netlify({
+    devFeatures: {
+      edgeFunctions: false,
+    },
+  }),
 
   prefetch: {
     prefetchAll: true,
