@@ -1,0 +1,5 @@
+/
+  Cache-Control: public, max-age=120
+
+/tutorials/*
+  Cache-Control: public, max-age=120
