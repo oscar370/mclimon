@@ -22,6 +22,7 @@ export default defineConfig({
     devFeatures: {
       edgeFunctions: false,
     },
+    imageCDN: false,
   }),
 
   prefetch: {
